@@ -1,7 +1,7 @@
 /*
 * ROUTES
 * /domain/put : create or update a domain record
-* /domain/available/<domain> : check if a given domain is free
+* /domain/available/<domain> : fcheck if a given domain is free
 *
 */
 use crate::errors::*;
