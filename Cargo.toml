@@ -19,4 +19,8 @@ trust-dns-server = "0.20.2"
 trust-dns-client = "0.20.2"
 rocket = { git = "https://github.com/SergioBenitez/Rocket", branch = "master" }
 rocket_contrib = { git = "https://github.com/SergioBenitez/Rocket", branch = "master" }
-serde = "1.0.125"
+sled = "0.34.4"
+sled-extensions = { version = "0.2.0", features = ["bincode"]}
+serde = { version = "1.0.125", features = ["derive"] }
+serde_json = "1.0.59"
+snafu = "0.6"

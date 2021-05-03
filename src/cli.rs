@@ -12,6 +12,8 @@ pub struct CliArgs {
     log: clap_log_flag::Log,
     #[structopt(flatten)]
     verbose: clap_verbosity_flag::Verbosity,
+    #[structopt(short = "s", long = "sled_data_path", default_value = "./sled_data")]
+    pub sled_data_path: String,
 }
 
 pub fn args() -> Result<CliArgs, Box<dyn std::error::Error>> {
