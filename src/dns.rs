@@ -16,8 +16,8 @@ static DEFAULT_TCP_REQUEST_TIMEOUT: u64 = 5;
 /// DnsApi provides an inteface for other processes to modify dns records
 pub struct DnsApi {
     pub catalog: Catalog,
-    pub authority_arc: Arc<RwLock<InMemoryAuthority>>,
-    pub authority_name: Name,
+    pub authority: InMemoryAuthority,
+    pub authority_name: trust_dns_client::rr::Name,
 }
 
 impl DnsApi {
@@ -68,23 +68,23 @@ impl DnsApi {
 
         let dns_api = DnsApi {
             catalog,
-            authority_arc: authority_arc_clone,
-            authority_name: authhority_name,
+            authority: authority,
+            authority_name: authority_name
         };
         // return the object
         dns_api
     }
 
-    pub async fn upsert(self, domain: String, ip: Ipv4Addr) {
+    pub async fn upsert(&mut self, domain: String, ip: Ipv4Addr) {
         let dyn_name = Name::from_str(&domain).unwrap();
         let dyn_ttl = 60;
         let dyn_rdata = RData::A(ip);
         let dyn_record = Record::from_rdata(dyn_name, dyn_ttl, dyn_rdata);
-        authority.upsert(dyn_record, authority.serial());
+        self.authority.upsert(dyn_record, self.authority.serial());
 
         self.catalog.upsert(
             LowerName::new(&self.authority_name),
-            Box::new(self.authority_arc),
+           Box::new(Arc::new(RwLock::new(self.authority))),
         );
 
     }
