@@ -34,3 +34,7 @@ path = "src/dns.rs"
 [[bin]]
 name = "main"
 path = "src/main.rs"
+
+[[bin]]
+name = "dbtest"
+path = "src/db_test.rs"

@@ -45,7 +45,6 @@ pub async fn watch_sled() {
     // watch all events by subscribing to the empty prefix
     let mut subscriber = db.watch_prefix(vec![]);
 
-    let tree_2 = db.clone();
 
     // `Subscription` implements `Iterator<Item=Event>`
     for event in subscriber.take(1) {
@@ -53,7 +52,7 @@ pub async fn watch_sled() {
         match event {
             Event::Insert(key, value) => {
                 println!("++ sled event {:?} {:?}", key, value);
-//                task::spawn(dns_server());
+                task::spawn(dns_server());
             },
             Event::Remove(key) => {}
         }
@@ -227,5 +226,7 @@ pub async fn dns_server() {
 pub async fn main() {
 
     watch_sled().await;
+
+//    dns_server().await;
 
 }
