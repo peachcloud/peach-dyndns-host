@@ -313,20 +313,7 @@ dependencies = [
  "cfg-if 0.1.10",
  "crossbeam-utils 0.6.6",
  "lazy_static",
- "memoffset 0.5.6",
- "scopeguard",
-]
-
-[[package]]
-name = "crossbeam-epoch"
-version = "0.9.4"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "52fb27eab85b17fbb9f6fd667089e07d6a2eb8743d02639ee7f6a7a7729c9c94"
-dependencies = [
- "cfg-if 1.0.0",
- "crossbeam-utils 0.8.4",
- "lazy_static",
- "memoffset 0.6.3",
+ "memoffset",
  "scopeguard",
 ]
 
@@ -348,17 +335,6 @@ checksum = "c3c7c73a2d1e9fc0886a08b93e98eb643461230d5f1925e4036204d5f2e261a8"
 dependencies = [
  "autocfg",
  "cfg-if 0.1.10",
- "lazy_static",
-]
-
-[[package]]
-name = "crossbeam-utils"
-version = "0.8.4"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "4feb231f0d4d6af81aed15928e58ecf5816aa62a2393e2c82f46973e92a9a278"
-dependencies = [
- "autocfg",
- "cfg-if 1.0.0",
  "lazy_static",
 ]
 
@@ -421,6 +397,12 @@ name = "doc-comment"
 version = "0.3.3"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "fea41bba32d969b513997752735605054bc0dfa92b4c56bf1189f2e174be7a10"
+
+[[package]]
+name = "dotenv"
+version = "0.15.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "77c90badedccf4105eca100756a0b1289e191f6fcbdadd3cee1d2f614f97da8f"
 
 [[package]]
 name = "dtoa"
@@ -994,15 +976,6 @@ dependencies = [
 ]
 
 [[package]]
-name = "memoffset"
-version = "0.6.3"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "f83fb6581e8ed1f85fd45c116db8405483899489e38406156c25eb743554361d"
-dependencies = [
- "autocfg",
-]
-
-[[package]]
 name = "mime"
 version = "0.3.16"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -1276,6 +1249,7 @@ version = "0.1.0"
 dependencies = [
  "clap-log-flag",
  "clap-verbosity-flag",
+ "dotenv",
  "futures 0.3.14",
  "log",
  "nest",
@@ -1283,7 +1257,7 @@ dependencies = [
  "rocket_contrib",
  "serde 1.0.125",
  "serde_json",
- "sled 0.34.6",
+ "sled",
  "sled-extensions",
  "snafu 0.6.10",
  "structopt",
@@ -1842,7 +1816,7 @@ dependencies = [
  "bincode",
  "crc32fast",
  "crossbeam-channel",
- "crossbeam-epoch 0.7.2",
+ "crossbeam-epoch",
  "crossbeam-utils 0.6.6",
  "fs2",
  "fxhash",
@@ -1851,22 +1825,6 @@ dependencies = [
  "parking_lot 0.9.0",
  "serde 1.0.125",
  "serde_bytes",
-]
-
-[[package]]
-name = "sled"
-version = "0.34.6"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "1d0132f3e393bcb7390c60bb45769498cf4550bcb7a21d7f95c02b69f6362cdc"
-dependencies = [
- "crc32fast",
- "crossbeam-epoch 0.9.4",
- "crossbeam-utils 0.8.4",
- "fs2",
- "fxhash",
- "libc",
- "log",
- "parking_lot 0.11.1",
 ]
 
 [[package]]
@@ -1880,7 +1838,7 @@ dependencies = [
  "log",
  "serde 1.0.125",
  "serde_derive",
- "sled 0.29.2",
+ "sled",
 ]
 
 [[package]]

@@ -9,7 +9,7 @@ use tokio::task;
 
 
 mod cli;
-mod dns;
+//mod dns;
 mod errors;
 mod http;
 
@@ -18,11 +18,11 @@ async fn main() {
     let args = cli::args().expect("error parsing args");
 
     // create future for dns and http servers
-    let dns_future = task::spawn(dns::server());
+//    let dns_future = task::spawn(dns::server());
     let http_future = task::spawn(http::server(args.sled_data_path));
 
     // join futures
-    let result = try_join!(dns_future, http_future);
+    let result = try_join!(http_future);
 
     match result {
         Err(e) => {
